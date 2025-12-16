@@ -1,4 +1,4 @@
-// import { ModalProvider } from "@/contexts/ModalContext";
+import { ModalProvider } from "@/contexts/ModalContext";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 // import "@/polyfills";
 import { tamaguiConfig } from "@/tamagui.config";
@@ -26,13 +26,13 @@ export default function RootLayout() {
       <ClerkProvider tokenCache={tokenCache}>
         <TamaguiProvider config={tamaguiConfig}>
           <PortalProvider shouldAddRootHost>
-            {/* <ModalProvider> */}
-            <ThemeProvider
-              value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-            >
-              <Slot />
-            </ThemeProvider>
-            {/* </ModalProvider> */}
+            <ModalProvider>
+              <ThemeProvider
+                value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+              >
+                <Slot />
+              </ThemeProvider>
+            </ModalProvider>
           </PortalProvider>
         </TamaguiProvider>
       </ClerkProvider>
